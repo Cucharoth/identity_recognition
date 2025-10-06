@@ -2,7 +2,7 @@ from app.exceptions.validation_exception import ValidationError
 from app.services.classifier_service import ClassifierService
 from app.services.validator_service import ValidatorService
 from app.utils.response_builder import ResponseBuilder
-from fastapi import APIRouter, HTTPException, UploadFile
+from fastapi import APIRouter, Depends, HTTPException, UploadFile
 
 from app.dto.api_response import ApiResponse
 from app.utils.logger import Logger 
@@ -11,13 +11,26 @@ router_logger = Logger()
 
 prediction_router = APIRouter()
 
+
+def get_validator_service() -> ValidatorService:
+   return ValidatorService()
+
+
+def get_classifier_service() -> ClassifierService:
+   return ClassifierService()
+
+
 @prediction_router.post("/verify", response_model=ApiResponse)
-def verify(file: UploadFile):
+def verify(
+   file: UploadFile,
+   validator: ValidatorService = Depends(get_validator_service),
+   classifier: ClassifierService = Depends(get_classifier_service),
+):
    try:
       router_logger.info('[Prediction] Verify endpoint called')
 
-      ValidatorService().validate(file)
-      result = ClassifierService().verify(file)
+      validator.validate(file)
+      result = classifier.verify(file)
 
       return ResponseBuilder.success(result, model_version=result["model_version"])
    except ValidationError as e:
