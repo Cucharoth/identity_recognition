@@ -1,3 +1,4 @@
+import os
 from app.exceptions.validation_exception import ValidationError
 from app.utils.logger import Logger
 from fastapi import UploadFile
@@ -8,7 +9,7 @@ from typing import Tuple
 class ValidatorService:
     """Service to validate uploaded images."""
 
-    def __init__(self, allowed_types=("image/jpeg", "image/png"), max_mb=5):
+    def __init__(self, allowed_types=("image/jpeg", "image/png"), max_mb=os.getenv("MAX_MB", 5)):
         self.allowed_types = allowed_types
         self.max_bytes = max_mb * 1024 * 1024
         self.logger = Logger()

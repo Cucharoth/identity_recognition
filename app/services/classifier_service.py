@@ -1,3 +1,4 @@
+import os
 import time
 
 from app.model.face_model import FaceModel
@@ -10,7 +11,7 @@ class ClassifierService:
     For now, it returns dummy results; later it will call the real model.
     """
 
-    def __init__(self, threshold=0.75, model_stats=None):
+    def __init__(self, threshold=os.getenv("THRESHOLD", 0.75), model_stats=None):
         self.model = FaceModel.get_instance()
         self.threshold = threshold
         self.model_stats = ModelStats.get_instance()

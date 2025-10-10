@@ -1,7 +1,7 @@
 [project]
-name = "espaciodentario-neural-network"
+name = "identity_recognition"
 version = "0.1.0"
-description = "neural network for espaciodentario"
+description = "Find definitions and references for functions and other symbols in this file by clicking a symbol below or in the code."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -11,6 +11,9 @@ dependencies = [
     "facenet-pytorch>=2.5.3",
     "python-multipart>=0.0.20",
     "pytest>=8.4.2",
+    "python-dotenv>=1.1.1",
+    "pillow>=11.3.0",
+    "tqdm>=4.67.1",
 ]
 
 [dependency-groups]

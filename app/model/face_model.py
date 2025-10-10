@@ -1,3 +1,4 @@
+import os
 from facenet_pytorch import MTCNN, InceptionResnetV1
 import torch
 
@@ -5,6 +6,7 @@ class FaceModel:
     _instance = None
 
     def __init__(self, classifier_path=None, device=None, model_version="me-verifier-v1"):
+    # def __init__(self, classifier_path=os.getenv("MODEL_PATH"), device=None, model_version="me-verifier-v1"):
         if FaceModel._instance is not None:
             raise Exception("FaceModel is a singleton! Use get_instance()")
         self.version = model_version
