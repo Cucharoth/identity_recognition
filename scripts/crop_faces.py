@@ -56,7 +56,7 @@ class FacePreprocessor:
 def process_folder(source_dir: str, dest_dir: str, preprocessor: FacePreprocessor):
     tqdm.write(f"Processing images in {source_dir}...")
 
-    max_saved = 10
+    max_saved = 300
     saved_count = 0
 
     # check that source folder exists and is a directory
@@ -65,6 +65,9 @@ def process_folder(source_dir: str, dest_dir: str, preprocessor: FacePreprocesso
     else:
         # build a filtered list of image files to get an accurate progress bar
         all_files = [f for f in os.listdir(source_dir) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
+        if len(all_files) < max_saved:
+            max_saved = len(all_files)
+
         for filename in tqdm(all_files, desc="Images", unit="file", total=max_saved):
             if saved_count >= max_saved:
                 tqdm.write(f"Reached cap of {max_saved} saved crops. Stopping.")
