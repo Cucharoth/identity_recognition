@@ -4,6 +4,11 @@ Face verification system that can identify the set user using a binary classific
 
 se propone un desarrollo mediante notebooks en donde se recopile la información y se estructure apropiadamente y se entrene al modelo de forma optima, luego se construirá una simple API mediante fastApi exponiendo un endpoint midiendo desempeño y registrando cada interacción.
 
+### Requerimientos
+
+uv
+python3.10+
+
 
 
 ### install dependencies
