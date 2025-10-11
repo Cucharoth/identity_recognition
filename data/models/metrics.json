@@ -1,0 +1,5 @@
+{
+    "accuracy": 0.956,
+    "auc": 0.9952,
+    "val_samples": 91
+}

@@ -42,4 +42,5 @@ class ValidatorService:
         #     raise ValidationError("File is not a valid image.") from e
         # file.file.seek(0)
 
+        self.logger.info("[Validator] File validation passed")
         return True

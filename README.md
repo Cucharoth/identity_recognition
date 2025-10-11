@@ -33,3 +33,11 @@ uv sync --group default
 ```
 uv run uvicorn app.main:app --reload --port 33001
 ```
+
+
+## Training Process
+
+uv run .\scripts\crop_faces.py
+uv run .\scripts\embeddings.py
+uv run .\scripts\train.py
+uv run .\scripts\evaluate.py

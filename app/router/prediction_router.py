@@ -1,3 +1,4 @@
+from app.exceptions.no_face_exception import NoFaceDetectedError
 from app.exceptions.validation_exception import ValidationError
 from app.services.classifier_service import ClassifierService
 from app.services.validator_service import ValidatorService
@@ -27,17 +28,20 @@ def verify(
    classifier: ClassifierService = Depends(get_classifier_service),
 ):
    try:
-      router_logger.info('[Prediction] Verify endpoint called')
+      router_logger.info('[Verify] Verify endpoint called')
 
       validator.validate(file)
       result = classifier.verify(file)
 
       return ResponseBuilder.success(result, model_version=result["model_version"])
    except ValidationError as e:
-      router_logger.error(f'[Prediction] Validation error: {str(e)}')
+      router_logger.error(f'[Verify] Validation error: {str(e)}')
       raise HTTPException(status_code=400, detail=ResponseBuilder.error(str(e), code=400))
+   except NoFaceDetectedError as e:
+      router_logger.error(f'[Verify] No face detected: {str(e)}')
+      raise HTTPException(status_code=422, detail=ResponseBuilder.error("No se detectó ningún rostro en la imagen.", code=422))
    except Exception as e:
-      router_logger.error(f'[Prediction] Error processing query: {str(e)}')
+      router_logger.error(f'[Verify] Error processing query: {str(e)}')
       raise HTTPException(
          status_code=500, 
          detail=ResponseBuilder.error("Lo sentimos, ha ocurrido un error procesando tu consulta.", code=500)
