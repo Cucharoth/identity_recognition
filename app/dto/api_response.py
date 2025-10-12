@@ -5,12 +5,13 @@ class Metadata(BaseModel):
     timestamp: str
 
 class VerifyData(BaseModel):
+    model_version: str
     is_me: bool
     score: float
     threshold: float
     timing_ms: float
 
 class ApiResponse(BaseModel):
-    model_version: str
+    success: bool
     data: VerifyData
     metadata: Metadata

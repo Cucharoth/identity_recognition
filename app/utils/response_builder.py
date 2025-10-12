@@ -6,12 +6,12 @@ class ResponseBuilder:
     """Builds structured JSON responses for API endpoints."""
 
     @staticmethod
-    def success(data: dict, model_version: str = None, warnings: list = None) -> dict:
+    def success(data: dict) -> dict:
         """
         Build a success response with standard fields.
         """
         return {
-            "model_version": model_version or "unknown",
+            "success": True,
             "data": data,
             "metadata": {
                 "request_id": str(uuid.uuid4()),
@@ -26,6 +26,7 @@ class ResponseBuilder:
         Build a structured error response.
         """
         return {
+            "success": False,
             "error": message,
             "code": code,
             "metadata": {

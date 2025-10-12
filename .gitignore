@@ -1,6 +1,7 @@
 me/
 not_me/
 *.npy
+detected_face.jpg
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

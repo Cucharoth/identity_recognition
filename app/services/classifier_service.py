@@ -24,7 +24,8 @@ class ClassifierService:
         self.logger.info("[Classifier] Starting verification")
         start_time = time.time()
 
-        score = self.model.predict(imageFile) 
+        score = self.model.predict(imageFile)
+        self.logger.info(f"[Classifier] Prediction score: {score}")
         is_me = score >= self.threshold
 
         # Calculate latency

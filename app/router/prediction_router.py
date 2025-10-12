@@ -33,7 +33,7 @@ def verify(
       validator.validate(file)
       result = classifier.verify(file)
 
-      return ResponseBuilder.success(result, model_version=result["model_version"])
+      return ResponseBuilder.success(result)
    except ValidationError as e:
       router_logger.error(f'[Verify] Validation error: {str(e)}')
       raise HTTPException(status_code=400, detail=ResponseBuilder.error(str(e), code=400))

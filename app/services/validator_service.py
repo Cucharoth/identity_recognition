@@ -9,9 +9,9 @@ from typing import Tuple
 class ValidatorService:
     """Service to validate uploaded images."""
 
-    def __init__(self, allowed_types=("image/jpeg", "image/png"), max_mb=os.getenv("MAX_MB", 5)):
+    def __init__(self, allowed_types=("image/jpeg", "image/png")):
         self.allowed_types = allowed_types
-        self.max_bytes = max_mb * 1024 * 1024
+        self.max_bytes = int(os.getenv("MAX_MB", 5)) * 1024 * 1024
         self.logger = Logger()
 
     def validate(self, file: UploadFile) -> bool:
@@ -21,11 +21,13 @@ class ValidatorService:
         Returns True if valid.
         """
         self.logger.info("[Validator] Starting validation")
+        self.logger.info(f"[Validator] Checking file of type: {file.content_type}")
         # Check file type
         if file.content_type not in self.allowed_types:
             self.logger.error(f"[Validator] Invalid file type: {file.content_type}. Only JPEG/PNG allowed.")
             raise ValidationError(f"Invalid file type: {file.content_type}. Only JPEG/PNG allowed.")
 
+        self.logger.info("[Validator] Checking file size")
         # Check file size
         file.file.seek(0, 2)  # Seek to end to get size
         size = file.file.tell()

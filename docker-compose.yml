@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    container_name: identity_recognition_app
+    ports:
+      - "33001:33001"
+    env_file:
+      - .env
+    networks:
+      - identity-recognition-network
+
+networks:
+  identity-recognition-network:
+    name: identity-recognition-network
+    driver: bridge
