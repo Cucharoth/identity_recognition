@@ -1,0 +1,30 @@
+[project]
+name = "identity_recognition"
+version = "0.1.0"
+description = "Find definitions and references for functions and other symbols in this file by clicking a symbol below or in the code."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.118.0",
+    "uvicorn>=0.37.0",
+    "dotenv>=0.9.9",
+    "facenet-pytorch>=2.5.3",
+    "python-multipart>=0.0.20",
+    "pytest>=8.4.2",
+    "python-dotenv>=1.1.1",
+    "pillow>=11.3.0",
+    "tqdm>=4.67.1",
+]
+
+[dependency-groups]
+dev = [
+    "imblearn>=0.0",
+    "matplotlib>=3.10.6",
+    "notebook>=7.4.7",
+    "numpy>=2.2.6",
+    "openpyxl>=3.1.5",
+    "pandas>=2.3.3",
+    "scikit-learn>=1.7.2",
+    "seaborn>=0.13.2",
+    "xlrd>=2.0.2",
+]
