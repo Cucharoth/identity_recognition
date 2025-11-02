@@ -3,10 +3,10 @@ name: Build and Push Backend Image
 on:
   push:
     branches:
-      - main
+      - feature/ci
   pull_request:
     branches:
-      - main
+      - feature/ci
 
 jobs:
   build-and-push:
@@ -39,5 +39,3 @@ jobs:
         context: .
         push: true
         tags: ghcr.io/cucharoth/identity_recognition_backend:latest
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
