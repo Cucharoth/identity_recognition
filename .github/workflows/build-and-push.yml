@@ -38,4 +38,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ghcr.io/cucharoth/identity_recognition:latest
+        tags: ghcr.io/${{ github.repository }}:latest
