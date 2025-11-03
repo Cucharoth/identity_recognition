@@ -25,7 +25,11 @@ jobs:
         echo "THRESHOLD=0.7" >> .env
         echo "PORT=$PORT" >> .env
         echo "MAX_MB=5" >> .env
-
+    
+    - name: Set image name to lowercase
+      id: set_image_name
+      run: |
+          echo "IMAGE_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
     - name: Log in to GitHub Container Registry
       uses: docker/login-action@v3
       with:
@@ -38,6 +42,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ghcr.io/cucharoth/identity_recognition_backend:latest
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
+        tags: ghcr.io/${{ env.IMAGE_NAME }}:latest
