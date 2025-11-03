@@ -3,10 +3,10 @@ name: Build and Push Backend Image
 on:
   push:
     branches:
-      - feature/ci
+      - main
   pull_request:
     branches:
-      - feature/ci
+      - main
 
 jobs:
   build-and-push:
