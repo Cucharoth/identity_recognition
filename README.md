@@ -100,11 +100,18 @@ curl -F "image=@selfie.jpg" http://localhost:33001/verify
 #### Respuesta Exitosa (200)
 ```json
 {
-  "model_version": "me-verifier-v1",
-  "is_me": true,
-  "score": 0.93,
-  "threshold": 0.75,
-  "timing_ms": 28.7
+    "success": true,
+    "data": {
+        "model_version": "me-verifier-v1",
+        "is_me": true,
+        "score": 1.0,
+        "threshold": 0.7,
+        "timing_ms": 1307.69
+    },
+    "metadata": {
+        "request_id": "7ea3db19-469a-4d9f-bb80-e0732a791f09",
+        "timestamp": "2025-11-02T22:11:49.942865-03:00"
+    }
 }
 ```
 
