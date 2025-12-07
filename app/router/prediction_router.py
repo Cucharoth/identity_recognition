@@ -23,15 +23,15 @@ def get_classifier_service() -> ClassifierService:
 
 @prediction_router.post("/verify", response_model=ApiResponse)
 def verify(
-   file: UploadFile,
+   image: UploadFile,
    validator: ValidatorService = Depends(get_validator_service),
    classifier: ClassifierService = Depends(get_classifier_service),
 ):
    try:
       router_logger.info('[Verify] Verify endpoint called')
 
-      validator.validate(file)
-      result = classifier.verify(file)
+      validator.validate(image)
+      result = classifier.verify(image)
 
       return ResponseBuilder.success(result)
    except ValidationError as e:
