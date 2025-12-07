@@ -54,7 +54,7 @@ MAX_MB=10
 
 ### Producción
 ```bash
-uv run uvicorn app.main:app --reload --port 33001
+uv run uvicorn app.main:app --reload --port 33210
 ```
 
 

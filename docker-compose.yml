@@ -3,7 +3,7 @@ services:
     build: .
     container_name: identity_recognition_app
     ports:
-      - "33001:33001"
+      - "33210:33210"
     env_file:
       - .env
     networks:

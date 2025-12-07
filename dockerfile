@@ -12,7 +12,7 @@ ADD . /app
 RUN uv sync --no-dev
 
 # Expose the port
-EXPOSE 33001
+EXPOSE 33210
 
 # Command to run Uvicorn
-CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "33001"]
+CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "33210"]

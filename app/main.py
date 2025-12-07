@@ -10,7 +10,7 @@ def main():
     uvicorn.run(
         "app.main:app",
         host="0.0.0.0",
-        port=os.getenv("PORT", 33001),
+        port=os.getenv("PORT", 33210),
         log_level="info",
         reload=True,      # only in dev
     )
