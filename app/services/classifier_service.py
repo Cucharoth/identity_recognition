@@ -34,6 +34,7 @@ class ClassifierService:
         # Optional: log to ModelStats if provided
         if self.model_stats:
             self.model_stats.record_inference({
+                "identity": "Eduardo Arévalo",
                 "score": round(score, 4),
                 "is_me": is_me,
                 "threshold": self.threshold,
@@ -43,6 +44,7 @@ class ClassifierService:
         self.logger.info(f"[Classifier] Verification done in {timing_ms} ms: is_me={is_me}, score={round(score, 4)}")
         # Return formatted response
         return {
+            "identity": "Eduardo Arévalo",
             "model_version": self.model.version,
             "is_me": is_me,
             "score": round(score, 4),

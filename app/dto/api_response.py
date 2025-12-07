@@ -5,6 +5,7 @@ class Metadata(BaseModel):
     timestamp: str
 
 class VerifyData(BaseModel):
+    identity: str
     model_version: str
     is_me: bool
     score: float
