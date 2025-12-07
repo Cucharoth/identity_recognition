@@ -7,9 +7,10 @@ services:
     env_file:
       - .env
     networks:
-      - identity-recognition-network
+      - esp3-network
 
 networks:
-  identity-recognition-network:
-    name: identity-recognition-network
-    driver: bridge
+  esp3-network:
+    external: true
+      
+    
